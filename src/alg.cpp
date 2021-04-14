@@ -11,32 +11,26 @@ int cbinsearch(int* arr, int size, int value, unsigned int i) {
         value < arr[mid] ? max = mid - 1 : min = mid + 1;
     }
     int l = 1;
-    bool bo1 = true, bo2 = true;
     bool bo = true, bo2 = true;
     if (count) {
-        while (bo1 || bo2) {
-            if (mid + l < size && mid + l != i) {
-                arr[mid + l] == value ? count++ : bo1 = false;
         while (mid > 0) {
             if (arr[mid - 1] == value && mid - 1 != i) {
                 mid--;
             } else {
                 break;
             }
-            if (mid - l >= 0 && mid - l != i) {
-                arr[mid - l] == value ? count++ : bo2 = false;
         }
         while (bo) {
             if (mid + l < size) {
                 arr[mid + l] == value ? count++ : bo = false;
             }
-            if (mid + l >= size && mid - l < 0) break;
             l++;
             if (mid + l >= size && mid - l < 0) break;
         }
     }
     return count;
 }
+
 int mod(int i) {
     if (i > 0) {
         return i;
@@ -44,6 +38,7 @@ int mod(int i) {
         return -i;
     }
 }
+
 int countPairs1(int* arr, int len, int value) {
     unsigned int count = 0;
     for (int i = 0; i < len - 1; i++) {
@@ -55,6 +50,7 @@ int countPairs1(int* arr, int len, int value) {
     }
     return count;
 }
+
 int countPairs2(int* arr, int len, int value) {
     unsigned int count = 0, i = 0, left = 0, right = len - 1;
     while (left < right) {
